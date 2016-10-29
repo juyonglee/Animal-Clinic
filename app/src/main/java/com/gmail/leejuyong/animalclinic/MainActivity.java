@@ -28,14 +28,17 @@ public class MainActivity extends AppCompatActivity {
                 // JSON이 에러를 발생시킬 수 있으므로
                 try
                 {
+
                     // { } 는 object를 의미
                     JSONObject objects = response.getJSONObject("SbAnimalHospital");
                     JSONArray pharmacies = objects.getJSONArray("row");
                     for(int i=0; i<pharmacies.length(); i++)
                     {
-                        Log.d("Test", pharmacies.getJSONObject(i).getString("WRKP_NM"));
-                        Log.d("Test", pharmacies.getJSONObject(i).getString("SITE_ADDR"));
-                        Log.d("Test", pharmacies.getJSONObject(i).getString("SITE_TEL"));
+                        if(pharmacies.getJSONObject(i).getString("TRD_STATE_GBN_CTN").equals("정상")) {
+                            Log.d("Test", pharmacies.getJSONObject(i).getString("WRKP_NM"));
+                            Log.d("Test", pharmacies.getJSONObject(i).getString("SITE_ADDR"));
+                            Log.d("Test", pharmacies.getJSONObject(i).getString("SITE_TEL"));
+                        }
                     }
                 }
                 catch (JSONException e)
