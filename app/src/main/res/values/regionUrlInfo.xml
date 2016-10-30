@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="성동구">http://openapi.sb.go.kr:8088/4d706b6d796a756e32324952545656/json/SbAnimalHospital/1/100</string>
+</resources>

@@ -11,18 +11,19 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import cz.msebera.android.httpclient.Header;
 
 public class MainActivity extends AppCompatActivity {
 
     ArrayList<Hospital_Info> hostital_list;
-    String Url = "http://openapi.sb.go.kr:8088/4d706b6d796a756e32324952545656/json/SbAnimalHospital/1/100";
+    String Url;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        Url = getResources().getString(R.string.성동구);
         hostital_list = new ArrayList<>();
 
         AsyncHttpClient client = new AsyncHttpClient();
@@ -33,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
                 // JSON이 에러를 발생시킬 수 있으므로
                 try
                 {
-
                     // { } 는 object를 의미
                     JSONObject objects = response.getJSONObject("SbAnimalHospital");
                     JSONArray pharmacies = objects.getJSONArray("row");
@@ -59,10 +59,8 @@ public class MainActivity extends AppCompatActivity {
                                     hostital_list.add(info);
                                 }
                             }
-
                         }
                     }
-
                     //  정보를 로그에 출력하는 기능
                     for (int num=0; num < hostital_list.size(); num++)
                     {
